@@ -1,55 +1,30 @@
-const http = require('http');
-const socketIo = require('socket.io');
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const reactionRoutes = require('./routes/reactionRoutes');
 
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
 
+const PORT = process.env.PORT || 5000;
 
+       // .Analiza los datos del cuerpo de la solicitud http.
+     //.Body parser convierte los datos del cuerpo de la solicitud en objetos javascript. y json los parsea a formato JSON
+app.use(bodyParser.json());
 
-// Middleware para parsear JSON
-app.use(express.json());
+mongoose.set('strictQuery', false);
+mongoose.connect('mongodb://127.0.0.1:27017/nodeApi')
 
-app.post('/rooms/:roomId/reactions', async (req, res) => {
-  try {
-    const { roomId } = req.params;
-    const { userId, type } = req.body;
+    .then(() => {
+        console.log('successful MongoDB connection');
+        // .Router
+        app.use('/reactions', reactionRoutes);
 
-    const room = await Room.findById(roomId);
-    if (!room) {
-      return res.status(404).send('Room not found');
-    }
+        // Start server
+        app.listen(PORT, () => {
+            console.log(`server running on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Error al conectar a la base de datos:', error);
+    });
 
-    const reaction = { userId, type };
-    room.reactions.push(reaction);
-    await room.save();
-
-    // Emitir el evento a través de WebSockets
-    io.to(roomId).emit('new-reaction', reaction);
-
-    res.status(201).send(room);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
-
-// Manejar las conexiones WebSocket
-io.on('connection', (socket) => {
-  console.log('New client connected');
-
-  socket.on('join-room', (roomId) => {
-    socket.join(roomId);
-  });
-
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
-  });
-});
-
-// Iniciar el servidor
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});

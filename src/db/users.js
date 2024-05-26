@@ -9,10 +9,10 @@ const UserSchema = new mongoose.Schema({
         sessionToken: { type: String, select: false },
     },
 });
-// .-Modelo de usuarios
+     // .-Model User
 const UserModel = mongoose.model('User', UserSchema);
 
-// Definimos funciones para interactuar con la base de datos.
+    // .-We define funtions to interact witch the data base 
 const getUsers = () => UserModel.find();
 const getUsersByEmail = (email) => UserModel.findOne({ email });
 
@@ -21,7 +21,7 @@ const getUsersByToken = (sessionToken) => UserModel.findOne({ 'authentication.se
 const getUsersById = (id) => UserModel.findById(id);
 const createUser = (values) => {
     const newUser = new UserModel(values);
-    // -guarda el nuevo usuario en la base de datos
+    // .-Save the new user in data base
     return newUser.save();
 };
 const deleteUserById = (id) => UserModel.findByIdAndDelete(id);

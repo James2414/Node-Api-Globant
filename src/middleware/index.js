@@ -3,6 +3,7 @@ const {get, merge,} = require('lodash');
 
 const {getUsersByToken, getUsersById} = require('../db/users');
 
+
 exports.isAutheticated = async (req, res, next) => {
     try{
         const sessionToken = req.cookies('JAMES-REST-API');

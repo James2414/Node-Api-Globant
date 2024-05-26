@@ -4,7 +4,7 @@ const users = require('./usersRouter');
 const userDelete = require('./deleteUser');
 const rooms = require('./spaceRouter/router');
 
-// .Router para manejo de endpoints
+// .Routes for endpoint management
 const router = express.Router();
 module.exports = () => {
     authentication(router);

@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllUsers } = require('../controllers/users');
+const { getAllUsers } = require('../controllers/getUsers');
 const {isAuthenticated } = require('../middleware/index')
 
 /** 
