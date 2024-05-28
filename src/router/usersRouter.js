@@ -17,6 +17,6 @@ const {isAuthenticated } = require('../middleware/index')
 */
 
 module.exports = function (router) {
-    router.get('/api/users', getAllUsers);
+    router.get('/users', getAllUsers);
 }
 //fijma

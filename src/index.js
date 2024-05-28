@@ -32,6 +32,8 @@ const spect = swaggerJSDoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spect));
 
 // .Middleware
+
+// .-Any request that arrives we will convert into json format
 app.use(bodyParser.json());
 app.use(cookieParser());
 

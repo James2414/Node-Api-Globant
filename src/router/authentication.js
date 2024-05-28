@@ -24,7 +24,7 @@ const {createRoom} = require('../controllers/spacesController/spaces')
 module.exports = function(router) {
     router.post('/api/register', register);
     router.post('/api/login', login);
-    router.post('/api/room', createRoom);
-    router.get('/api/room')
+    // router.post('/api/room', createRoom);
+    // router.get('/api/room')
 };
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ReactionSchema = new mongoose.Schema({
   hallId: {
-    // !-esto se utiliza comUnmente para referenciar documentos en otras colecciones de mongoDb
+    // .-this is commonly used to reference documents in other mongodb collections.
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Sala',
     required: true
@@ -22,7 +22,6 @@ const ReactionSchema = new mongoose.Schema({
   timestamps: true  
 }
 );
-
 const Reaction = mongoose.model('Reaction', ReactionSchema);
 
 module.exports = Reaction;

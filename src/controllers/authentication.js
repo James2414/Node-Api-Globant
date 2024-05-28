@@ -31,28 +31,27 @@ exports.register = async (req, res) => {
       return res.sendStatus(500);
    }
 };
-// login
+  // .-login
 exports.login = async (req, res) => {
    try {
       const { email, password } = req.body;
       if (!email || !password) {
          return res.sendStatus(401);
       }
-      //We Check If There Is a User With That id.
-
+         // .-We Check If There Is a User With That id.
     const user = await getUsersByEmail(email).select('+authentication.salt +authentication.password');
     if(!user){
       res.sendStatus(400)
     }
 
-    //CHECK IF THE HASHED PASSWORD IS THE SAME AS THE PASSWORD IN THE DATABASE.
+       //CHECK IF THE HASHED PASSWORD IS THE SAME AS THE PASSWORD IN THE DATABASE.
     const expecHash = authentication(user.authentication.salt, password);
 
-    // If it is Not The Hash Password We Return Error
+         // .-If it is Not The Hash Password We Return Error
     if(user.authentication.password !== expecHash){
       res.sendStatus(400)
     }
-    // User Token.
+        // .-User Token.
     const salt = random();
     user.authentication.sessionToken = authentication(salt, user._id.toString());
     
