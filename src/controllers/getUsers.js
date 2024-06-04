@@ -1,5 +1,4 @@
 const express = require('express');
-
 const { getUsers } = require('../db/users');
 
 exports.getAllUsers = async (req, res, next) => {

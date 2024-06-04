@@ -1,6 +1,6 @@
 const Reaction = require('../models/Reaction');
 
-const crearReaccion = async (req, res) => {
+const createReaction = async (req, res) => {
   const { hallId, userId, typeReaction } = req.body;
 
   try {
@@ -18,5 +18,5 @@ const crearReaccion = async (req, res) => {
 };
 
 module.exports = {
-  crearReaccion
+  createReaction
 };

@@ -1,13 +1,32 @@
 const express = require('express');
 const { register, login } = require('../controllers/authentication');
 
-const {createRoom} = require('../controllers/spacesController/spaces')
+const {createRoom} = require('../controllers/spacesController/spaces');
+
+/** 
+ * @swagger
+ * components:
+ *  schemas:
+ *    User:
+ *      type: object
+ *      properties:
+ *        email:
+ *          type: string
+ *        password:
+ *          type: string
+ *      required:
+ *        - email
+ *        - password
+ *      example:
+ *        email: "alan@gmail.com"
+ *        password: "jaja"
+ */
 
 /** 
  * @swagger
  * /api/register:
  *   post:
- *     summary: create new user
+ *     summary: Create new user
  *     tags:
  *       - User
  *     requestBody:
@@ -18,9 +37,8 @@ const {createRoom} = require('../controllers/spacesController/spaces')
  *             $ref: '#/components/schemas/User'
  *     responses:
  *       '200':
- *         description: new user created
-*/
-
+ *         description: New user created
+ */
 module.exports = function(router) {
     router.post('/api/register', register);
     router.post('/api/login', login);
