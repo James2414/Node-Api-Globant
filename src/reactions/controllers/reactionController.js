@@ -4,14 +4,14 @@ const createReaction = async (req, res) => {
   const { hallId, userId, typeReaction } = req.body;
 
   try {
-    const nuevaReaccion = new Reaction({
+    const newReaction = new Reaction({
       hallId,
       userId,
       typeReaction
     });
 
-    await nuevaReaccion.save();
-    res.status(201).json(nuevaReaccion);
+    await newReaction.save();
+    res.status(201).json(newReaction);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

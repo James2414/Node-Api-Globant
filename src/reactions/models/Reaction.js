@@ -14,7 +14,7 @@ const ReactionSchema = new mongoose.Schema({
   },
   typeReaction: {
     type: String,
-    enum: ['fassinante', 'conforme', 'disgustado'],
+    enum: ['fascinating', 'according', 'disgusted'],
     required: true
   }
 },
