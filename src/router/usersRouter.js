@@ -8,7 +8,7 @@ const { isAuthenticated } = require('../middleware/index')
  * @swagger
  * /api/users:
  *   get:
- *     summary: return all users
+ *     summary: Return all users
  *     tags:
  *       - User
  *     responses:
