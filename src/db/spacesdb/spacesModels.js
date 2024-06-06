@@ -1,11 +1,11 @@
 // models/Room.js
 const { values } = require('lodash');
+
 const mongoose = require('mongoose');
 const roomSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  }
+  name: { type: String, required: true,},
+  tower: { type: String, required: true},
+  floor: { type: Number, required: true}
 });
 
 const Room = mongoose.model('Room', roomSchema);

@@ -23,5 +23,9 @@ const ReactionSchema = new mongoose.Schema({
 }
 );
 const Reaction = mongoose.model('Reaction', ReactionSchema);
+const getReactions = () => Reaction.find();
 
-module.exports = Reaction;
+module.exports = {
+  Reaction,
+  getReactions
+}

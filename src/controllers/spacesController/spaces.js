@@ -4,10 +4,10 @@ const Room = require('../../db/spacesdb/spacesModels');
 
 exports.createRoom = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { name, floor, tower } = req.body;
 
         // .-We create a new room with the given name
-        const newRoom = await Room.createRoom({ name });
+        const newRoom = await Room.createRoom({ name, floor, tower });
         return res.status(201).json(newRoom);
     } catch (error) {
         console.error(error);
