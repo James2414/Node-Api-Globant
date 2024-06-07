@@ -10,12 +10,12 @@ exports.register = async (req, res) => {
       if (!email || !password) {
          return res.status(400).json({ message: 'email or password' });
       }
-      // .check if the user with that email
+      // .- check if the user with that email
       const existingUser = await getUsersByEmail(email);
       if (existingUser) {
          return res.status(400).json({ message: 'User already exists' });
       }
-// .create in user
+      // .- create in user
       const salt = random();
       const user = await createUser({
          email,
@@ -43,8 +43,7 @@ exports.login = async (req, res) => {
     if(!user){
       res.sendStatus(400)
     }
-
-       //CHECK IF THE HASHED PASSWORD IS THE SAME AS THE PASSWORD IN THE DATABASE.
+        // -. Check if the hashed password is the same in DB
     const expecHash = authentication(user.authentication.salt, password);
 
          // .-If it is Not The Hash Password We Return Error

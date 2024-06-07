@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ReactionSchema = new mongoose.Schema({
   hallId: {
-    // .-this is commonly used to reference documents in other mongodb collections.
+    // .- This is commonly used to reference documents in other mongodb collections.
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Sala',
     required: true

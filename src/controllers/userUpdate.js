@@ -18,14 +18,12 @@ exports.UserUpdate = async (req, res) => {
         const updatedUserData = {
             password: hashedPassword
         };
-
         // .- Update the user's password in the database
         const updatedUser = await updateUser(id, updatedUserData);
 
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
         }
-
          // .- user updated
         return res.status(200).json({ message: 'Password updated successfully', updatedUser });
     } catch (error) {

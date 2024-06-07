@@ -22,9 +22,6 @@ const { isAuthenticated } = require('../middleware/index')
  *                 $ref: '#/components/schemas/User'
  */
 
-
-
-
 /**
  * @swagger
  * /api/user/{id}:

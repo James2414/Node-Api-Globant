@@ -17,7 +17,7 @@ exports.isAutheticated = async (req, res, next) => {
             return res.sendStatus(403);
         }
 
-        merge(req, {identity: existingUser});
+        merge(req, { identity: existingUser });
 
         return next();
     }catch(err){
