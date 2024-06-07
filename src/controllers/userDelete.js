@@ -2,7 +2,6 @@ const express = require('express');
 
 const { deleteUserById } = require('../db/users');
 
-
 exports.UserDelete = async (req, res) => {
     try {
         //extract the request id
