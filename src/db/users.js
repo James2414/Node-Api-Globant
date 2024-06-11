@@ -15,9 +15,7 @@ const UserModel = mongoose.model('User', UserSchema);
      // .- We define funtions to interact witch the data base 
 const getUsers = () => UserModel.find();
 const getUsersByEmail = (email) => UserModel.findOne({ email });
-
 const getUsersByToken = (sessionToken) => UserModel.findOne({ 'authentication.sessionToken' : sessionToken }); 
-
 const getUsersById = (id) => UserModel.findById(id);
 const createUser = (values) => {
     const newUser = new UserModel(values);

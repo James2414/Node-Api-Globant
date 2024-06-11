@@ -1,12 +1,10 @@
 const express = require('express');
 
-const { UserDelete } = require('../controllers/userDelete')
-
 /**
  * @swagger
  * /api/user/{id}:
  *   delete:
- *     summary: Delete a user
+ *     summary: Eliminar un usuario
  *     tags:
  *       - User
  *     parameters:
@@ -15,19 +13,33 @@ const { UserDelete } = require('../controllers/userDelete')
  *         schema:
  *           type: string
  *         required: true
- *         description: the user ID
+
+*         description: El ID del usuario
  *     responses:
  *       200:
- *         description: User deleted successfully
- *     content:
+ *         description: Usuario eliminado exitosamente
+ *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'
- *     
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuario eliminado exitosamente"
  *       404:
- *         description: user not found
+ *         description: Usuario no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Usuario no encontrado"
  */
+const { UserDelete } = require('../controllers/userDelete');
 
-module.exports = function(router){
+
+module.exports = function(router) {
     router.delete('/api/user/:id', UserDelete);
-}
+};

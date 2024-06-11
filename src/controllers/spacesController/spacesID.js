@@ -1,3 +1,4 @@
+const { reduce, map } = require('lodash');
 const { getRoomsId } = require('../../db/spacesdb/spacesModels');
 
 exports.getRoomById = async (req, res) => {
@@ -8,7 +9,7 @@ exports.getRoomById = async (req, res) => {
             return res.status(400).json({ error: 'ID is required' });
         }
         const room = await getRoomsId(id);
-
+map()
         // .-Check if the room exists
         if (!room) {
             return res.status(404).json({ error: 'Room not found' });

@@ -1,6 +1,6 @@
 const express = require('express');
-
 const { deleteUserById } = require('../db/users');
+const { sort } = require('d3');
 
 exports.UserDelete = async (req, res) => {
     try {
@@ -8,9 +8,9 @@ exports.UserDelete = async (req, res) => {
     const { id } = req.params
     const deletedUser = await deleteUserById(id);
     return res.json(deletedUser);
-    
-
     } catch (err) {
         return res.sendStatus(400);   
 }
 }
+
+
