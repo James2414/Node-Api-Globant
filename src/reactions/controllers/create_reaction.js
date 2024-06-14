@@ -1,4 +1,4 @@
-const Reaction = require('../models/Reaction');
+const { Reaction } = require('../models/reactions_models');
 
 const createReaction = async (req, res) => {
   const { hallId, userId, typeReaction } = req.body;

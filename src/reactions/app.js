@@ -1,29 +1,50 @@
 const express = require('express');
+const http = require('http');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const reactionRoutes = require('./routes/reactionRoutes');
+const router = require('./routes/reactionsRouter/index_router')
 
 const app = express();
-
-const PORT = process.env.PORT || 5000;
-
-       // .- Objets js and format JSON
 app.use(bodyParser.json());
 
-mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/nodeApi')
 
+const server = http.createServer(app);
+const PORT = process.env.PORT || 5000;
+
+
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://admin:admin@devtaminapi.so4sbfb.mongodb.net/';
+mongoose.connect(MONGO_URL)
     .then(() => {
-        console.log('successful MongoDB connection');
-        // .- Router
-        app.use('/reactions', reactionRoutes);
-
-        // .- Start server
-        app.listen(PORT, () => {
-            console.log(`server running on port ${PORT}`);
-        });
+        console.log('Conectado a MongoDB exitosamente');
     })
-    .catch((error) => {
-        console.error('Err conection MongoBD:', error);
+    .catch((err) => {
+        console.error('Error al conectar a la base de datos:', err);
     });
+
+server.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
+
+
+app.use('/', router());
+
+
+
+
+// mongoose.set('strictQuery', false);
+// mongoose.connect('mongodb://127.0.0.1:27017/nodeApi')
+
+//     .then(() => {
+//         console.log('successful MongoDB connection');
+//         // .- Router
+//         app.use('/', routes());
+
+//         // .- Start server
+//         app.listen(PORT, () => {
+//             console.log(`server running on port ${PORT}`);
+//         });
+//     })
+//     .catch((error) => {
+//         console.error('Err conection MongoBD:', error);
+//     });
 

@@ -1,5 +1,5 @@
 const { reduce, map } = require('lodash');
-const { getRoomsId } = require('../../db/spacesdb/spacesModels');
+const { getRoomsId } = require('../../db/spacesdb/spaces_models');
 
 exports.getRoomById = async (req, res) => {
     try {

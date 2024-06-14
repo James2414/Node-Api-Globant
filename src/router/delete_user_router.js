@@ -1,4 +1,10 @@
 const express = require('express');
+const { UserDelete } = require('../controllers/user_delete');
+
+
+module.exports = function(router) {
+    router.delete('/api/user/:id', UserDelete);
+};
 
 /**
  * @swagger
@@ -37,9 +43,5 @@ const express = require('express');
  *                   type: string
  *                   example: "Usuario no encontrado"
  */
-const { UserDelete } = require('../controllers/userDelete');
 
 
-module.exports = function(router) {
-    router.delete('/api/user/:id', UserDelete);
-};

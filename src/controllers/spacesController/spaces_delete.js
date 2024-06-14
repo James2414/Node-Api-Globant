@@ -1,4 +1,4 @@
-const { deleteRoomId } = require('../../db/spacesdb/spacesModels');
+const { deleteRoomId } = require('../../db/spacesdb/spaces_models');
 
 exports.deleteRoom = async(req, res) =>{
     try {

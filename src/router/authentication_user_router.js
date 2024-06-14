@@ -1,5 +1,10 @@
 const express = require('express');
-const { register, login } = require('../controllers/authentication');
+const { register, login } = require('../controllers/authentication_user');
+
+module.exports = function(router) {
+    router.post('/api/register', register);
+    router.post('/api/login', login);
+};
 
 
 /** 
@@ -38,8 +43,4 @@ const { register, login } = require('../controllers/authentication');
  *       '200':
  *         description: New user created
  */
-module.exports = function(router) {
-    router.post('/api/register', register);
-    router.post('/api/login', login);
-};
 

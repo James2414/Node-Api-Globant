@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { getReactions } = require('../models/Reaction');
+const { getReactions } = require('../models/reactions_models');
 
 exports.getAllReactions = async (req, res) => {
     try {

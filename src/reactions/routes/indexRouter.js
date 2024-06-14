@@ -1,10 +1,11 @@
-const express = require('express');
-const getReactions = require('../routes/getReactionsRouter')
+// const express = require('express');
+// const getReactions = require('../routes/getReactionsRouter');
 
-const routes = express.Router();
 
-module.exports = () =>{
-    getReactions(routes);
-    return routes;
-}
+// const router = express.Router();
+
+// module.exports = () =>{
+//     getReactions(routes);
+//     return router;
+// }
 

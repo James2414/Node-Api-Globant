@@ -1,16 +1,54 @@
 require('dotenv').config();
 const express = require('express');
+const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const router = require('./router');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
+const cors = require('cors');
+const router = require('./router'); 
+
+const app = express();
+
+// Middlewares
+app.use(compression());
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cors()); 
+app.use(express.static(path.join(__dirname, 'public'))); 
+
+// Routes
+app.use('/', router());
+
+// Create server HTTP
+const server = http.createServer(app);
+
+// PORT
+const PORT = process.env.PORT || 4000;
+
+//  MongoDB
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://admin:admin@devtaminapi.so4sbfb.mongodb.net/';
+mongoose.connect(MONGO_URL)
+    .then(() => {
+        console.log('Conectado a MongoDB exitosamente');
+    })
+    .catch((err) => {
+        console.error('Error al conectar a la base de datos:', err);
+    });
+
+server.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
+
+
+
+
+
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
-const PORT = process.env.PORT || 4000;
-const app = express();
 
 // .Swagger
 const options = {
@@ -34,24 +72,23 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spect));
 // .Middleware
 
 // .-Any request that arrives we will convert into json format
-app.use(bodyParser.json());
-app.use(cookieParser());
 
-// .Mongo db connection (local)
-mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/nodeApi')
 
-    .then(() => {
-        console.log('successful MongoDB connection');
-        // .Router
-        app.use('/', router());
+// // .Mongo db connection (local)
+// mongoose.set('strictQuery', false);
+// mongoose.connect('mongodb://127.0.0.1:27017/nodeApi')
 
-        // Start server
-        app.listen(PORT, () => {
-            console.log(`server running on port ${PORT}`);
-        });
-    })
-    .catch((error) => {
-        console.error('Error al conectar a la base de datos:', error);
-    });
+//     .then(() => {
+//         console.log('successful MongoDB connection');
+//         // .Router
+//         app.use('/', router());
+
+//         // Start server
+//         app.listen(PORT, () => {
+//             console.log(`server running on port ${PORT}`);
+//         });
+//     })
+//     .catch((error) => {
+//         console.error('Error al conectar a la base de datos:', error);
+//     });
 
