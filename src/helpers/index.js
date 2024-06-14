@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-
 const SECRET = 'JAMES-REST-API';
 
      // .- Convert the buffer in and encoded string in base64

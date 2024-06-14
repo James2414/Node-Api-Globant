@@ -28,17 +28,19 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 4000;
 
 //  MongoDB
-const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://admin:admin@devtaminapi.so4sbfb.mongodb.net/';
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://dev.USER_SECRET:dev.PASSWORD_SECRET@devtaminapi.so4sbfb.mongodb.net/';
+
+
 mongoose.connect(MONGO_URL)
     .then(() => {
-        console.log('Conectado a MongoDB exitosamente');
+        console.log('connected successfully MongoDB');
     })
     .catch((err) => {
-        console.error('Error al conectar a la base de datos:', err);
+        console.error('Err connect Mongo:', err);
     });
 
 server.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`Server runnig in port ${PORT}`);
 });
 
 
