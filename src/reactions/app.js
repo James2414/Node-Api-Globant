@@ -7,15 +7,13 @@ const router = require('./routes/reactionsRouter/index_router')
 const app = express();
 app.use(bodyParser.json());
 
-
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 
-
-const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://dev.USER_SECRET:dev.PASSWORD_SECRET@devtaminapi.so4sbfb.mongodb.net/';
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://admin:admin@devtaminapi.so4sbfb.mongodb.net/';
 mongoose.connect(MONGO_URL)
     .then(() => {
-        console.log('connected successfully MongoDB');
+        console.log('connection successful mongoo');
     })
     .catch((err) => {
         console.error('Error connect MongoDB:', err);
@@ -24,7 +22,6 @@ mongoose.connect(MONGO_URL)
 server.listen(PORT, () => {
     console.log(`Server runnig in port ${PORT}`);
 });
-
 
 app.use('/', router());
 
