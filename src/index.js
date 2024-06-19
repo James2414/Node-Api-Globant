@@ -7,27 +7,25 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
-const router = require('./router'); 
+const router = require('./Router'); 
+const morgan = require('morgan');
 
 const app = express();
 
 // Middlewares
+app.use(morgan('dev'));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors()); 
 app.use(express.static(path.join(__dirname, 'public'))); 
 
-// Routes
 app.use('/', router());
 
-// Create server HTTP
+//create server HTTP
 const server = http.createServer(app);
 
-// PORT
 const PORT = process.env.PORT || 4000;
-
-//  MongoDB
 const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://dev.USER_SECRET:dev.PASSWORD_SECRET@devtaminapi.so4sbfb.mongodb.net/';
 
 

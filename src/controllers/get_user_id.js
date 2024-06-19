@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUsersById } = require('../db/users_db');
+const { getUsersById } = require('../Models/users_db');
 
 exports.getUser = async (req, res) => {
     try{

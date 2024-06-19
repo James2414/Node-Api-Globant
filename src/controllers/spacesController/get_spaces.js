@@ -1,6 +1,6 @@
 // controllers/roomController.js
 
-const Room = require('../../db/spacesdb/spaces_models');
+const Room = require('../../Models/spacesdb/spaces_models');
 
 exports.createRoom = async (req, res) => {
     try {

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
-const { getUsersByEmail, createUser } = require('../db/users_db');
-const { authentication, random } = require('../helpers');
+const { getUsersByEmail, createUser } = require('../Models/users_db');
+const { authentication, random } = require('../Helpers');
 /** 
  * 
 */

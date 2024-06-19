@@ -1,13 +1,13 @@
 const { Reaction } = require('../models/reactions_models');
 
 const createReaction = async (req, res) => {
-  const { hallId, userId, typeReaction } = req.body;
+  const { hallId, rol, question  } = req.body;
 
   try {
     const newReaction = new Reaction({
       hallId,
-      userId,
-      typeReaction
+      rol,
+      question
     });
 
     await newReaction.save();

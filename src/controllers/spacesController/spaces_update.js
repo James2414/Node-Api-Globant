@@ -1,4 +1,4 @@
-const { updateRooms } =  require('../../db/spacesdb/spaces_models')
+const { updateRooms } =  require('../../Models/spacesdb/spaces_models')
 
 exports.updateRoom = async (req, res) => {
     try {

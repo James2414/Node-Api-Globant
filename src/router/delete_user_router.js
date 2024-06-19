@@ -1,5 +1,5 @@
 const express = require('express');
-const { UserDelete } = require('../controllers/user_delete');
+const { UserDelete } = require('../Controllers/user_delete');
 
 
 module.exports = function(router) {

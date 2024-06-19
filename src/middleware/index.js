@@ -1,7 +1,7 @@
 const express = require('express');
-const {get, merge,} = require('lodash');
+const { get, merge } = require('lodash');
 
-const {getUsersByToken, getUsersById} = require('../db/users_db');
+const { getUsersByToken, getUsersById } = require('../Models/users_db');
 
 
 exports.isAutheticated = async (req, res, next) => {

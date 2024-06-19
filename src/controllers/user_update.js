@@ -1,6 +1,6 @@
 const express = require('express');
 const crypto = require('crypto');
-const { updateUser } = require('../db/users_db');
+const { updateUser } = require('../Models/users_db');
 
 exports.UserUpdate = async (req, res) => {
     try {

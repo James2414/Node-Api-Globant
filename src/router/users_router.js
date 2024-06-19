@@ -1,8 +1,12 @@
 const express = require('express');
-const { getAllUsers } = require('../controllers/get_all_users');
-const { getUser } = require('../controllers/get_user_id');
-const { isAuthenticated } = require('../middleware/index')
+const { getAllUsers } = require('../Controllers/get_all_users');
+const { getUser } = require('../Controllers/get_user_id');
+// const { isAuthenticated } = require('../Middleware/index')
 
+module.exports = function (router) {
+    router.get('/api/users', getAllUsers);
+    router.get('/api/user/:id', getUser);
+}
 
 /**
  * @swagger
@@ -47,8 +51,4 @@ const { isAuthenticated } = require('../middleware/index')
  *         description: User not found
  */
 
-module.exports = function (router) {
-    router.get('/api/users', getAllUsers);
-    router.get('/api/user/:id', getUser);
-}
-//fijma
+

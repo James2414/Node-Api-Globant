@@ -1,5 +1,5 @@
 const express = require('express');
-const { deleteUserById } = require('../db/users_db');
+const { deleteUserById } = require('../Models/users_db');
 const { sort } = require('d3');
 
 exports.UserDelete = async (req, res) => {
