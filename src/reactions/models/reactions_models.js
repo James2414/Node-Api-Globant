@@ -12,10 +12,12 @@ const ReactionSchema = new mongoose.Schema({
 });
 const Reaction = mongoose.model('Reaction', ReactionSchema);
 const getReactions = () => Reaction.find();
+const deleteReactionnId = () => Reaction.findByIdAndDelete(id);
 
 module.exports = {
   Reaction,
-  getReactions
+  getReactions,
+  deleteReactionnId
 }
 
 

@@ -2,7 +2,6 @@ const { Reaction } = require('../models/reactions_models');
 
 const createReaction = async (req, res) => {
   const { hallId, rol, question  } = req.body;
-
   try {
     const newReaction = new Reaction({
       hallId,
