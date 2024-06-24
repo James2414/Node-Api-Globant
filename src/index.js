@@ -69,9 +69,9 @@ const options = {
 const spect = swaggerJSDoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spect));
 
-// .Middleware
 
-// .-Any request that arrives we will convert into json format
+
+
 
 
 // // .Mongo db connection (local)
