@@ -1,7 +1,7 @@
-const { createRoom, getRooms } = require('../../controllers/spacesController/get_spaces');
-const { deleteRoom } = require('../../controllers/spacesController/spaces_delete');
-const { getRoomById } = require('../../controllers/spacesController/spaces_id');
-const { updateRoom } = require('../../controllers/spacesController/spaces_update');
+const { createRoom, getRooms } = require('../../Controllers/spacesController/get_spaces');
+const { deleteRoom } = require('../../Controllers/spacesController/spaces_delete');
+const { getRoomById } = require('../../Controllers/spacesController/spaces_id');
+const { updateRoom } = require('../../Controllers/spacesController/spaces_update');
 
 
 
