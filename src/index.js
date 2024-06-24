@@ -7,7 +7,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
-const router = require('./Router'); 
+const router = require('./router'); 
 const morgan = require('morgan');
 
 const app = express();
