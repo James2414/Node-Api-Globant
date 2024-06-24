@@ -1,6 +1,6 @@
 const express = require('express');
-const { getAllUsers } = require('../Controllers/get_all_users');
-const { getUser } = require('../Controllers/get_user_id');
+const { getAllUsers } = require('../controllers/get_all_users');
+const { getUser } = require('../controllers/get_user_id');
 // const { isAuthenticated } = require('../Middleware/index')
 
 module.exports = function (router) {
